@@ -1,21 +1,28 @@
-import { put, call, takeEvery, select } from 'redux-saga/effects';
+import { put, call, takeEvery, select, take, fork } from 'redux-saga/effects';
 
 import { setImages, setError } from '../actions/imagesActions';
+import { incrementPage, resetPage } from '../actions/searchActions';
 import { IMAGES } from '../types';
 import { getImages } from '../api';
 
-export const getPage = state => state.nextPage;
+export const getPage = state => state.search.page;
+export const getQuery = state => state.search.query;
 
 export function* handleImagesLoad() {
   try {
-    // const page = yield select(getPage);
-    const images = yield call(getImages, 'klen', 1);
+    const query = yield select(getQuery);
+    const page = yield select(getPage);
+    const images = yield call(getImages, query, page);
     yield put(setImages(images));
+    yield put(incrementPage());
   } catch (error) {
     yield put(setError(error.toString()));
   }
 }
 
 export function* watchImagesLoad() {
-  yield takeEvery(IMAGES.LOAD, handleImagesLoad); //svaki klik, broj poziva
+  while (true) {
+    yield take(IMAGES.LOAD);
+    yield fork(handleImagesLoad); //take + fork = takeEvery
+  }
 }

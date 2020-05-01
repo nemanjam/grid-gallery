@@ -1,7 +1,8 @@
 import { IMAGES } from '../types';
 
-const loadImages = () => ({
-  type: IMAGES.LOAD
+const loadImages = term => ({
+  type: IMAGES.LOAD,
+  payload: { term }
 });
 
 const setImages = images => ({

@@ -14,7 +14,7 @@ const imagesReducer = (state = initialState, { type, payload }) => {
       return {
         ...state,
         loading: false,
-        images: payload.images
+        images: [...state.images, ...payload.images]
       };
     case IMAGES.FAIL:
       return {
