@@ -1,4 +1,4 @@
-import { IMAGES } from '../types';
+import { IMAGES, SET_QUERY } from '../types';
 
 const initialState = { images: [], loading: false, error: null };
 
@@ -22,6 +22,11 @@ const imagesReducer = (state = initialState, { type, payload }) => {
         loading: false,
         images: [],
         error: payload
+      };
+    case SET_QUERY:
+      return {
+        ...state,
+        images: []
       };
     default:
       return state;

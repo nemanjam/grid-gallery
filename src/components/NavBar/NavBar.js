@@ -33,7 +33,7 @@ const NavBar = ({ loadImages, setQuery, resetPage }) => {
         <Nav className="mr-auto">
           <Nav.Link href="#home">Home</Nav.Link>
         </Nav>
-        <Form inline>
+        <Form inline onSubmit={handleSubmit}>
           <Form.Group as={Col} controlId="validationFormik02">
             <FormControl
               type="text"
@@ -42,7 +42,7 @@ const NavBar = ({ loadImages, setQuery, resetPage }) => {
               value={localQuery}
               onChange={e => setLocalQuery(e.target.value)}
             />
-            <Button onClick={handleSubmit} variant="outline-light">
+            <Button type="submit" variant="outline-light">
               Search
             </Button>
           </Form.Group>

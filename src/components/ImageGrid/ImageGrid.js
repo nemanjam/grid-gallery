@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { connect } from 'react-redux';
 import clsx from 'clsx';
 
-import Button from 'react-bootstrap/Button';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
-import Spinner from 'react-bootstrap/Spinner';
 
+import LoadMore from '../LoadMore/LoadMore';
+import ImageItem from '../ImageItem/ImageItem';
 import { loadImages } from '../../store/actions/imagesActions';
 
 import styles from './ImageGrid.module.scss';
@@ -20,35 +20,18 @@ const ImageGrid = ({ loadImages, images: { images, loading, error } }) => {
             <Col className={clsx(styles.gallery)}>
               {images.map((image, index) => {
                 return (
-                  <div className={styles.gallery__item} key={index}>
-                    <img
-                      className={styles.gallery__img}
-                      src={image.previewURL}
-                      alt={image.tags}
-                    />
-                  </div>
+                  <ImageItem
+                    className={styles.gallery__item}
+                    image={image}
+                    key={index}
+                  />
                 );
               })}
             </Col>
           </Row>
           <Row>
             <Col className={clsx('text-center', 'py-3')}>
-              {!loading ? (
-                <Button onClick={loadImages} variant="primary">
-                  Load more
-                </Button>
-              ) : (
-                <Button variant="primary" disabled>
-                  <Spinner
-                    as="span"
-                    animation="border"
-                    size="sm"
-                    role="status"
-                    aria-hidden="true"
-                  />
-                  Loading...
-                </Button>
-              )}
+              <LoadMore loadImages={loadImages} loading={loading} />
             </Col>
           </Row>
         </>
