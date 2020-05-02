@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import clsx from 'clsx';
 
@@ -19,13 +19,7 @@ const ImageGrid = ({ loadImages, images: { images, loading, error } }) => {
           <Row>
             <Col className={clsx(styles.gallery)}>
               {images.map((image, index) => {
-                return (
-                  <ImageItem
-                    className={styles.gallery__item}
-                    image={image}
-                    key={index}
-                  />
-                );
+                return <ImageItem image={image} key={index} />;
               })}
             </Col>
           </Row>
