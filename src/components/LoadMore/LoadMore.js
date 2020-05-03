@@ -10,11 +10,11 @@ const LoadMore = ({ loading, loadImages }) => {
   return (
     <>
       {!loading ? (
-        <Button onClick={loadImages} variant="primary">
+        <Button onClick={loadImages} variant="outline-primary">
           Load more
         </Button>
       ) : (
-        <Button variant="primary" disabled>
+        <Button variant="outline-primary" disabled>
           <Spinner
             as="span"
             animation="border"

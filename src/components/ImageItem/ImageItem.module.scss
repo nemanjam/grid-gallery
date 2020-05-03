@@ -7,11 +7,16 @@
   width: 100%;
   height: auto; // FORA
   object-fit: cover;
-  // display: block; 
-  // background-size: auto 100%;
-  // background-repeat: no-repeat;
-  // background-position: center;
+}
 
+.gallery__img_div {
+  display: block; 
+  background-size: auto 100%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.item__card {
   box-shadow: -2px 2px 10px 0px rgba(#444, 0.4);
   transition: transform 0.3s ease-in-out;
   &:hover {
@@ -22,7 +27,23 @@
     }
   }
 }
-
+.item__details {
+  position: relative;
+  z-index: 1;
+  padding: 15px;
+  color: #444;
+  background: #fff;
+  text-transform: lowercase;
+  letter-spacing: 1px;
+  color: #828282;
+  
+  &:before {
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding-right: 0.5em;
+    color: #444;
+  }
+}
 .spinner {
   height: 300px;
   width: 300px;

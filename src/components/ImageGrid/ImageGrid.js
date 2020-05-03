@@ -32,7 +32,7 @@ const ImageGrid = ({ loadImages, images: { images, loading, error } }) => {
       ) : (
         <Row>
           <Col className="text-center">
-            <h2>Search something</h2>
+            <h2>Search for something</h2>
           </Col>
         </Row>
       )}

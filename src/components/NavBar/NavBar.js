@@ -16,7 +16,7 @@ const NavBar = ({ loadImages, setQuery, resetPage }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
-    if (/[a-zA-Z]{3,}/.test(localQuery)) {
+    if (/^[a-zA-Z]{3,}$/.test(localQuery)) {
       resetPage();
       setQuery(localQuery);
       loadImages();
@@ -26,12 +26,12 @@ const NavBar = ({ loadImages, setQuery, resetPage }) => {
   };
 
   return (
-    <Navbar bg="primary" variant="dark" expand="lg">
+    <Navbar bg="light" variant="light" expand="lg">
       <Navbar.Brand href="#home">Grid Gallery</Navbar.Brand>
       <Navbar.Toggle aria-controls="basic-navbar-nav" />
       <Navbar.Collapse id="basic-navbar-nav">
         <Nav className="mr-auto">
-          <Nav.Link href="#home">Home</Nav.Link>
+          {/* <Nav.Link href="#home">Home</Nav.Link> */}
         </Nav>
         <Form inline onSubmit={handleSubmit}>
           <Form.Group as={Col} controlId="validationFormik02">
@@ -42,7 +42,7 @@ const NavBar = ({ loadImages, setQuery, resetPage }) => {
               value={localQuery}
               onChange={e => setLocalQuery(e.target.value)}
             />
-            <Button type="submit" variant="outline-light">
+            <Button type="submit" variant="outline-primary">
               Search
             </Button>
           </Form.Group>
