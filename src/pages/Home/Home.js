@@ -9,7 +9,7 @@ const Home = () => {
   return (
     <>
       <NavBar />
-      <Container fluid className="pt-2">
+      <Container fluid className="pt-3">
         <ImageGrid />
       </Container>
     </>
